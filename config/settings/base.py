@@ -45,7 +45,7 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',  # Form layouts
+    # 'crispy_forms',  # Form layouts # don't use at this project
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
@@ -55,6 +55,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # custom users app
     'nomadgram.users.apps.UsersConfig',
+    'images',
     # Your stuff: custom apps go here
 ]
 
