@@ -74,3 +74,31 @@ class LikeImage(APIView):
             return Response(status=status.HTTP_201_CREATED)
 
 
+class CommentOnImage(APIView):
+
+    def post(self, request, image_id, format=None):
+
+        user = request.user
+        print(user)
+
+        try:
+            found_image = models.Image.objects.get(id=image_id)
+        except models.Image.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        # serializer는 현재 message 데이터만 받았다.
+        # creator가 없으면 is_valid에서 오류가 발생한다.
+        # 그렇기에 creator속성을 read_only로 제한하여 무시?하도록 한다.
+        # 위 부분은 더 알아봐야할 듯 하다.
+        serializer = serializers.CommentSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            serializer.save(creator=user, image=found_image)
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+       
+        else:
+            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+        return Response(status=status.HTTP_201_CREATED)

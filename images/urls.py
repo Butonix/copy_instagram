@@ -17,5 +17,9 @@ urlpatterns = [
         view=views.LikeImage.as_view(),
         name='like_image'
     ),
-  
+    url(
+        regex=r'(?P<image_id>[0-9]+)/comment/',
+        view=views.CommentOnImage.as_view(),
+        name='like_image'
+    ),
 ]
