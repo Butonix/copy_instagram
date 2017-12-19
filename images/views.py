@@ -3,37 +3,37 @@ from rest_framework.response import Response
 from . import models, serializers
 
 
-# 1만개의 사진이 있을 때, 이것을 전부가져오는 API를 만들면, 서버가 뻗는다.
-# 실제로는 이런 API를 만들고 제공하지 않는다!!!!!!!!!
-class ListAllImages(APIView):
 
-    # format은 json, xml 등이 올 수 있고, 지금은 테스트라서 NONE으로 설정함.
+class Feed(APIView):
+
+    # 내가 팔로잉하는 유저들의 피드를 받는 것.
+    # 피드는 사람에 상관없이 모든 사람들의 사진이 최신순으로 정렬되어야 한다.
     def get(self, request, format=None):
 
-        all_images = models.Image.objects.all()
+        user = request.user
+        
+        following_users = user.following.all()
 
-        serializer = serializers.ImageSerializer(all_images, many=True)
+        image_list = []
 
-        return Response(data=serializer.data)
+        # 내가 팔로잉하는 유저의 이미지를 가져올 것이다.
+        # 그런데 유저에는 이미지 필드가 없다.
+        # 이럴 때는? Set을 이용한다!
+        # 이미지는 user모델을 외래키로 참조한다. related_name을 통해 set을 참조하면 된다.
+        for following_user in following_users:
 
+            # [:2]의 의미는 배열의 원소 중 2개만 가져온다는 뜻, 파이썬 기본 문법임
+            user_images = following_user.images.all()[:2]
 
-class ListAllComment(APIView):
+            # 팔로잉 유저의 이미지를 배열에 넣는다.
+            for image in user_images:
+                image_list.append(image)
 
-    def get(self, request, format=None):
+        # 여기까지해서 출력했을 때, 팔로잉 유저의 이미지를 최신순으로 순서대로 삽입된 배열을 볼 수 있다.
+        # 실제로는 사람에 관계없이 오로지 이미지 자체가 최신순으로 정렬되어 있어야한다.
+        # 아래는 key를 기준으로 정렬을 수행한다.
+        sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
 
-        all_comments = models.Comment.objects.all()
+        serializer = serializers.ImageSerializer(sorted_list, many=True)
 
-        serializer = serializers.CommentSerializer(all_comments, many=True)
-
-        return Response(data=serializer.data)
-
-
-class ListAllLike(APIView):
-
-    def get(self, request, format=None):
-
-        all_likes = models.Like.objects.all()
-
-        serializer = serializers.LikeSerializer(all_likes, many=True)
-
-        return Response(data=serializer.data)
+        return Response(serializer.data)
