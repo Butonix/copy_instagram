@@ -42,7 +42,7 @@ class Feed(APIView):
 
 class LikeImage(APIView):
 
-    def get(self, request, image_id, format=None):
+    def post(self, request, image_id, format=None):
         
         user = request.user
 
