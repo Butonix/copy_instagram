@@ -8,6 +8,7 @@ class ExploreUsers(APIView):
 
     def get(self, request, format=None):
 
+        # 최근 가입순 유저 정렬
         last_five = models.User.objects.all().order_by('-date_joined')[:5]
 
         serializer = serializers.ExploreUserSerializer(last_five, many=True)
