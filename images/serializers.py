@@ -15,7 +15,9 @@ class FeedUserSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
-    creator = FeedUserSerializer()
+    # 각각 원하는 아이디로 유저를 생성할 수 없다.
+    # 따라서 read_only 속성을 부여한다.
+    creator = FeedUserSerializer(read_only=True)
 
     class Meta:
         model = models.Comment
