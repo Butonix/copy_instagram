@@ -31,6 +31,13 @@ class Feed(APIView):
             for image in user_images:
                 image_list.append(image)
 
+        # 나의 
+        my_images = user.images.all()[:2]
+
+        for image in my_images:
+
+            image_list.append(image)
+
         # 여기까지해서 출력했을 때, 팔로잉 유저의 이미지를 최신순으로 순서대로 삽입된 배열을 볼 수 있다.
         # 실제로는 사람에 관계없이 오로지 이미지 자체가 최신순으로 정렬되어 있어야한다.
         # 아래는 key를 기준으로 정렬을 수행한다.
@@ -170,7 +177,7 @@ class ModerateComments(APIView):
 
     def delete(self, request, image_id, comment_id, format=None):
 
-        """ delete a comment on my image """
+        """ delete a comment from my photos """
 
         user = request.user
 
