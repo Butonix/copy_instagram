@@ -74,6 +74,7 @@ class UserProfile(APIView):
         
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+
     def put(self, request, username, format=None):
 
         user = request.user
@@ -86,17 +87,14 @@ class UserProfile(APIView):
         elif found_user.username != user.username:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-        else:
+        else:            
             serializer = serializers.UserProfileSerializer(found_user, data=request.data, partial=True)
 
             if serializer.is_valid():
-
                 serializer.save()
-
                 return Response(data=serializer.data, status=status.HTTP_200_OK)
 
             else:
-
                 return Reponse(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -141,11 +139,52 @@ class Search(APIView):
 
         if username is not None:
             users = models.User.objects.filter(username__istartswith=username)
-
             serializer = serializers.ListUserSerializer(users, many=True)
-
             return Response(data=serializer.data, status=status.HTTP_200_OK )
 
-        else:
-            
+        else:            
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class ChangePassword(APIView):
+
+    def put(self, request, username, format=None):
+
+        user = request.user
+
+        print('유저네임')
+        print(user.username)
+        print(username)
+
+        if user.username == username:
+
+            current_password = request.data.get('current_password', None)
+
+            if current_password is not None:
+
+                # check_password 장고 디폴트 제공 함수
+                password_match = user.check_password(current_password)
+
+                if password_match:
+
+                    new_password = request.data.get('new_password', None)
+
+                    if new_password is not None:
+
+                        # set_password 장고 디폴트 제공 함수
+                        user.set_password(new_password)
+                        user.save()
+
+                        return Response(status=status.HTTP_200_OK)
+
+                    else:
+                        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+                else:
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
