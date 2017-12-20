@@ -16,11 +16,14 @@ urlpatterns = [
     # User management
     url(r'^users/', include('nomadgram.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^api-token-auth/', obtain_jwt_token), # Added by jaeeonjin for jwt
     
     # Your stuff: custom urls includes go here
     url(r'^images/', include('images.urls', namespace='images')),
-    url(r'^notifications/', include('nomadgram.notification.urls', namespace='notifications'))
+    url(r'^notifications/', include('nomadgram.notification.urls', namespace='notifications')),
+
+    # url(r'^api-token-auth/', obtain_jwt_token),  # Added by jaeeonjin for jwt
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
