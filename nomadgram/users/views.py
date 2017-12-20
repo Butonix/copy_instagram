@@ -102,7 +102,7 @@ class Search(APIView):
         username = request.query_params.get('username', None)
 
         if username is not None:
-            users = models.User.objects.filter(username__icontains=username)
+            users = models.User.objects.filter(username__istartswith=username)
 
             serializer = serializers.ListUserSerializer(users, many=True)
 
