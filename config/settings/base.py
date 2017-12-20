@@ -127,11 +127,13 @@ MANAGERS = ADMINS
 #     'default': env.db('DATABASE_URL', default='postgres://localhost/nomadgram'),
 # }
 DATABASES = {
-    'default': {
+
+    # TODO : 외부 파일 설정 찾아보기
+    'default': { 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'nomadgram',
         'USER': 'postgres',
-        'PASSWORD': 'aawodjs2',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }
