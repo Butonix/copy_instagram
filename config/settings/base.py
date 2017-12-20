@@ -46,13 +46,17 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     # 'crispy_forms',  # Form layouts # don't use at this project
+
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'allauth.socialaccount.providers.facebook',
+
     'rest_framework', # djangorestframework
     'rest_framework.authtoken', # django-rest-auth
     'rest_auth.registration', # Enable registration
     'rest_auth', # django-rest-auth
+    
     'taggit', # Tag
     'taggit_serializer', # Tag Serializer
     
