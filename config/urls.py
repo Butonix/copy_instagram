@@ -16,9 +16,9 @@ urlpatterns = [
     url(r'^users/', include('nomadgram.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
     
-    url(r'^images/', include('images.urls', namespace='images')),
     # Your stuff: custom urls includes go here
-
+    url(r'^images/', include('images.urls', namespace='images')),
+    url(r'^notifications/', include('nomadgram.notification.urls', namespace='notifications'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

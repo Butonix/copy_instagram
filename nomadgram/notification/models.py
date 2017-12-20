@@ -21,4 +21,10 @@ class Notification(image_models.TimeStampedModel):
     # 팔로우의 경우는 이미지가 없다.. 어떻게 해야할까??
     # 그냥 필수라고 안하면 된다..
     image = models.ForeignKey(image_models.Image, null=True, blank=True)
-    
+    comment = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return 'From: {} - To: {}'.format(self.creator, self.to)
+
+    class Meta:
+        ordering = ['-created_at']
