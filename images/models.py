@@ -36,6 +36,7 @@ class Image(TimeStampedModel):
     class Meta:
         ordering = ['-created_at']
 
+
 class Comment(TimeStampedModel):
 
     """ Comment Model """
