@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b965218ac5378bd4e107b9a411ae9265787ed6f42123954a5f46627b25cd58bd"
+            "sha256": "86849a9cf520d9249887d49d263e903104694de315f645a97db037016865be3e"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -265,10 +265,17 @@
         },
         "djangorestframework": {
             "hashes": [
-                "sha256:79268055755125caaebface3acbe13150bbc3a83b78e9bf1a1abfde7ab0c5231",
-                "sha256:067960e5e9e5586d3b2d53a1d626c4800dc33cd8309487d404fc63355674556f"
+                "sha256:8056370cc36e67ddbc0a8258b853ef1f696c58fcd2e4e2caf370a5d2fb39aabc",
+                "sha256:03182f37d9975d00ba7c97f4fd8969d1dfa70f8efcad3d1718afacb073b9cb63"
             ],
-            "version": "==3.7.3"
+            "version": "==3.7.4"
+        },
+        "djangorestframework-jwt": {
+            "hashes": [
+                "sha256:ab15dfbbe535eede8e2e53adaf52ef0cf018ee27dbfad10cbc4cbec2ab63d38c",
+                "sha256:5efe33032f3a4518a300dc51a51c92145ad95fb6f4b272e5aa24701db67936a7"
+            ],
+            "version": "==1.11.0"
         },
         "factory-boy": {
             "hashes": [
@@ -429,6 +436,13 @@
                 "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
             ],
             "version": "==2.2.0"
+        },
+        "pyjwt": {
+            "hashes": [
+                "sha256:a4e5f1441e3ca7b382fd0c0b416777ced1f97c64ef0c33bfa39daf38505cfd2f",
+                "sha256:500be75b17a63f70072416843dc80c8821109030be824f4d14758f114978bae7"
+            ],
+            "version": "==1.5.3"
         },
         "pytest": {
             "hashes": [

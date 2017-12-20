@@ -152,10 +152,6 @@ class ChangePassword(APIView):
 
         user = request.user
 
-        print('유저네임')
-        print(user.username)
-        print(username)
-
         if user.username == username:
 
             current_password = request.data.get('current_password', None)

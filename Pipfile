@@ -31,6 +31,7 @@ pytest-sugar = "==0.9.0"
 "5ae41c1" = {path = ".\\psycopg2-2.7.3.2-cp36-cp36m-win_amd64.whl"}
 djangorestframework = "*"
 django-taggit = "*"
+djangorestframework-jwt = "*"
 
 
 [dev-packages]
