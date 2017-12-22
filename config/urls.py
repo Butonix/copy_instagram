@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework_jwt.views import obtain_jwt_token
+from nomadgram import views
 
 urlpatterns = [
   
@@ -21,7 +22,9 @@ urlpatterns = [
 
     # url(r'^api-token-auth/', obtain_jwt_token),  # Added by jaeeonjin for jwt
     url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+
+    url(r'^', views.ReactAppView.as_view()), # catch-all URL
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # 요건 media 관련 요청
 

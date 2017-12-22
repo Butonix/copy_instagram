@@ -14,6 +14,7 @@ const env = process.env.NODE_ENV;
 const middlewares = [thunk]
 
 // dev일 떄만 redux logger를 부른다.
+// 리덕스(미들)에서 이뤄지는 action과 state에 대한 로그를 확인할 수 있다.
 if(env === "development") {
     const { logger } = require("redux-logger");
     middlewares.push(logger);
