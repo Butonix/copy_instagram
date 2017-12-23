@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { routerReducer, routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import users from "redux/module/users";
-
+import Reactotron from "ReactotronConfig";
 
 // 이 변수는 nodejs의 전체 정보를 갖고 있다.
 // 현재 나의 코드가 dev인지 prod인지 확인 가능
@@ -34,7 +34,14 @@ const reducer = combineReducers ({
 // 1) const middlewares = [1, 2, 3, 4];
 // 2-1) console.log(middlewares) 결과 : [1,2,3,4]
 // 2-2) console.log(...middlewares) 결과 : 1 2 3 4
-let store = initialState => createStore(reducer, applyMiddleware(...middlewares));
+
+// 상태가 dev일 때 store를 reactotron과 연결시킴.
+let store;
+if(env === "development") {
+    store = initialState => Reactotron.createStore(reducer, applyMiddleware(...middlewares));
+} else {
+    store = initialState => createStore(reducer, applyMiddleware(...middlewares));
+}
 
 export { history };
 
