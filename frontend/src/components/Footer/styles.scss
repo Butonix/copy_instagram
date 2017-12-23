@@ -1,25 +1,41 @@
 .footer {
-    max-width: $max-page-width;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;    
-    .column {
-        .nav {
-            .list {
-                display: flex;
-                .list-item {
-                    margin-right: 10px;
-                    color: $dark-blue;
-                }
-            }
+  max-width: $max-page-width;
+  width: 100%;
+  margin: 55px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: $small-font-size;
+  flex-wrap: wrap;
+  @include breakpoint(mobileonly) {
+    justify-content: center;
+  }
+  .column {
+    margin-bottom: 15px;
+    @include breakpoint(mobileonly) {
+      margin-bottom: 0;
+    }
+    .nav {
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        @include breakpoint(mobileonly) {
+          justify-content: center;
         }
-        .copyright {
-            color: $dark-grey;
+        .list-item {
+          margin-right: 15px;
+          color: $dark-blue;
+          cursor: pointer;
+          @include breakpoint(mobileonly) {
+            margin-bottom: 15px;
+          }
         }
-     }
+      }
+    }
+    .copyright {
+      color: $dark-grey;
+    }
+  }
 }

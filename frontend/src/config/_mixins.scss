@@ -1,0 +1,36 @@
+
+// mixin이라는 게 함수인데
+// 이름이 breakpoint인 함수를 부르면
+// 아래의 모든 포인트에 대한 사이즈를 반환함
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        // media 쿼리는 브라우저에 맞게 css가 변화함
+        // em은 길이 단위이며, 바디의 폰트 사이즈에 비례한다. 폰트 사이즈가 14px이면 14*70
+
+        // 플랫폼(point)에 따른 사이즈는 인터넷에 찾으면 있다고 한다.
+        @media (min-width: 70em) {
+            @content;
+        }
+    }
+    @else if $point == laptop {
+        @media (min-width: 64em) {
+            @content;
+        }
+    }
+    @else if $point == tablet {
+        @media (min-width: 50em) {
+            @content;
+        }
+    }
+    @else if $point == phablet {
+        @media (min-width: 37.5em) {
+            @content;
+        }
+    }
+    @else if $point == mobileonly {
+      @media (max-width: 37.5em) {
+            @content;
+      }
+    }
+
+}
