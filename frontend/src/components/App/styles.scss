@@ -1,0 +1,8 @@
+@import "reset-css/reset.css";
+
+
+// import 없이 $bg-color 변수를 사용할 수 있는 이유는
+// dev 셋팅에서 sass loader에 data~ 를 추가해주었기 때문이다.
+body {
+    background-color: $bg-color;
+}
