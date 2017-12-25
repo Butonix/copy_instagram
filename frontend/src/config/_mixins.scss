@@ -1,36 +1,73 @@
+$tablet-width: 768px;
+$desktop-width: 875px;
+$xl-desktop-width: 1351px;
+$phone-width: 320px;
+$iphone6-width: 375px;
+$iphone6plus-width: 450px;
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint=="tablet" {
+    @media (min-width: #{$iphone6plus-width}) and (max-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="tablet-landscape" {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) and (orientation: landscape) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="table-portrait" {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) and (orientation: portrait) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="phone" {
+    @media (min-width: #{$phone-width}) and (max-width: #{$iphone6plus-width}) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="phone-landscape" {
+    @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width}) and (orientation: landscape) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="desktop-xl" {
+    @media (min-width: #{$xl-desktop-width}) {
+      @content;
+    }
+  }
+  @else if $breakpoint=="phone-tablet" {
+    @media (max-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+}
 
-// mixin이라는 게 함수인데
-// 이름이 breakpoint인 함수를 부르면
-// 아래의 모든 포인트에 대한 사이즈를 반환함
-@mixin breakpoint($point) {
-    @if $point == desktop {
-        // media 쿼리는 브라우저에 맞게 css가 변화함
-        // em은 길이 단위이며, 바디의 폰트 사이즈에 비례한다. 폰트 사이즈가 14px이면 14*70
+@mixin boxBorder($radius) {
+  border: 1px solid #e6e6e6;
+  background-color: white;
+  @if $radius==yes {
+    border-radius: 3px;
+  }
+}
 
-        // 플랫폼(point)에 따른 사이즈는 인터넷에 찾으면 있다고 한다.
-        @media (min-width: 70em) {
-            @content;
-        }
-    }
-    @else if $point == laptop {
-        @media (min-width: 64em) {
-            @content;
-        }
-    }
-    @else if $point == tablet {
-        @media (min-width: 50em) {
-            @content;
-        }
-    }
-    @else if $point == phablet {
-        @media (min-width: 37.5em) {
-            @content;
-        }
-    }
-    @else if $point == mobileonly {
-      @media (max-width: 37.5em) {
-            @content;
-      }
-    }
-
+@mixin blueButton() {
+  -webkit-appearance: none;
+  border-radius: 3px;
+  background-color: $light-blue;
+  color: white;
+  font-weight: 600;
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $normal-font-size;
+  line-height: 26px;
+  cursor: pointer;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  &:active {
+    opacity: 0.9;
+  }
 }

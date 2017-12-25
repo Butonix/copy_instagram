@@ -1,9 +1,15 @@
 @import "reset-css/reset.css";
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700'); // 구글 폰트 사이트에서 얻을 수 있다.
+@import url("https://fonts.googleapis.com/css?family=Roboto:300:400,500");
+
 
 // import 없이 $bg-color 변수를 사용할 수 있는 이유는
 // dev 셋팅에서 sass loader에 data~ 를 추가해주었기 때문이다.
 body {
     background-color: $bg-color;
     font-family: -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, Helvetica, Arial, sans-serif; // 폰트 얻는 방법 -> 요소 검사 (body에 있었음, 인스타그램은.)
+    font-size: $normal-font-size;
+}
+
+img {
+    max-width: 100%;
 }

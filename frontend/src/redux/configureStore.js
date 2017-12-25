@@ -4,7 +4,7 @@ import { routerReducer, routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { i18nState } from "redux-i18n";
-import users from "redux/module/users";
+import user from "redux/module/user";
 // import Reactotron from "ReactotronConfig";
 
 // 이 변수는 nodejs의 전체 정보를 갖고 있다.
@@ -27,7 +27,7 @@ if(env === "development") {
 }
 
 const reducer = combineReducers ({
-    users,
+    user,
     routing: routerReducer,
     i18nState
 });
