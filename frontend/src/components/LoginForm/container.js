@@ -34,7 +34,7 @@ class Container extends Component {
         // <input type button으로 막는 것이 아닌, 이 문장을 씀으로써 submit으로
         // 기존 동작을 거부할 수 있다.
         event.preventDefault();
-        console.log(this.state);
+        // redux action will be here
     }
 }
 

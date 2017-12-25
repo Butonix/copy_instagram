@@ -13,18 +13,34 @@ export const SignupForm = (props, context) => (
             <Ionicon icon="logo-facebook" fontSize="20px" color="white" /> {context.t("Log in with Facebook")}
         </button>
         <span className={formStyles.divider}>or</span>
-        <form className={formStyles.form}>
-            <input type="email" placeholder={context.t("Email")} className={formStyles.textInput} />
-            <input type="text" placeholder={context.t("Full Name")} className={formStyles.textInput} />
+        <form className={formStyles.form} onSubmit={props.handleSubmit}>
+            <input 
+                type="email"
+                placeholder={context.t("Email")}
+                className={formStyles.textInput} 
+                onChange={props.handleInputChange}
+                name="email"
+            />
             <input
-                type="username"
+                type="text"
+                placeholder={context.t("Full Name")}
+                className={formStyles.textInput}
+                onChange={props.handleInputChange}
+                name="fullname"
+            />
+            <input
+                type="text"
                 placeholder={context.t("Username")}
                 className={formStyles.textInput}
+                onChange={props.handleInputChange}
+                name="username"
             />
             <input
                 type="password"
                 placeholder={context.t("Password")}
                 className={formStyles.textInput}
+                onChange={props.handleInputChange}
+                name="password"              
             />
             <input type="submit" value={context.t("Sign up")} className={formStyles.button} />
         </form>
@@ -34,6 +50,13 @@ export const SignupForm = (props, context) => (
         </p>
     </div>
 );
+
+SignupForm.propTypes = {
+    usernameValue: PropTypes.string.isRequired,
+    passwordValue: PropTypes.string.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+};
 
 SignupForm.contextTypes = {
     t: PropTypes.func.isRequired
