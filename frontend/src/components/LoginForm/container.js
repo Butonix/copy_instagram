@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import LoginForm from "./presenter";
 
 class Container extends Component {
@@ -8,7 +9,10 @@ class Container extends Component {
         password: ""
     };
     
-    
+    static propTypes = { 
+        facebookLogin: PropTypes.func.isRequired
+    }
+
     render() {
         const { username, password } = this.state;
         return (
@@ -16,6 +20,7 @@ class Container extends Component {
                 // 함수를 props로 넘기고 있다..!
                 handleInputChange={this._handleInputChange} 
                 handleSubmit={this._handleSubmit}
+                handleFacebookLogin={this._handleFacebookLogin}
                 usernameValue={username} 
                 passwordValue={password}
             />
@@ -34,7 +39,15 @@ class Container extends Component {
         // <input type button으로 막는 것이 아닌, 이 문장을 씀으로써 submit으로
         // 기존 동작을 거부할 수 있다.
         event.preventDefault();
+
         // redux action will be here
+
+    }
+
+    _handleFacebookLogin = response => {
+        console.log(response);
+        const { facebookLogin } = this.props;
+        facebookLogin(response.accessToken); 
     }
 }
 

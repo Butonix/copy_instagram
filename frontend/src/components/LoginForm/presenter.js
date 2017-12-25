@@ -1,6 +1,6 @@
 import React from "react";
-import Ionicon from "react-ionicons";
 import formStyles from "shared/formStyles.scss";
+import FacebookLogin from "react-facebook-login";
 import PropTypes from "prop-types";
 
 
@@ -30,11 +30,21 @@ export const LoginForm = (props, context) => (
             />
         </form>
         <span className={formStyles.divider}>or</span>
-        <span className={formStyles.facebookLink}>
-            <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" /> {context.t("Log in with Facebook")}
+        <span>
+            {/* Ionicon은 facebook 컴포넌트와 연동이 안되서 지움 */}
+            {/* <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" /> {context.t("Log in with Facebook")} */}
+            <FacebookLogin
+                appId="1970800653246350"
+                autoLoad={false}
+                fields="name,email,picture"
+                callback={props.handleFacebookLogin} 
+                cssClass={formStyles.facebookLink}    
+                icon="fa-facebook-square" // icon은 awsome icon과 연동된다. http://fontawesome.io/icon
+                textButton={context.t("Log in with Facebook")}
+            />
         </span>
         <span className={formStyles.forgotLink}> {context.t("Forgot password?")} </span>
-    </div>
+    </div>  
 );
 
 LoginForm.propTypes = {
@@ -42,6 +52,7 @@ LoginForm.propTypes = {
     passwordValue: PropTypes.string.isRequired,
     handleInputChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    handleFacebookLogin: PropTypes.func.isRequired
 };
 
 LoginForm.contextTypes = {
