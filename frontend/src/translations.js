@@ -1,8 +1,35 @@
 export const translations = {
-    es: {
-        "Login in": "Initial Session"
-    },
-    // kr: {
-    //     "Login in": "초기화 세션"
-    // }
+  'kr': {
+    'Checkout our app. Is cool': '로그아웃',
+    'Have an account?': '이미 계정이 있나요?',
+    'Log in': '로그인',
+    'Don\'t have an account?': '계정이 없나요?',
+    'Sign up': '회원가입',
+    'Get the app': '모바일 어플리케이션을 설치해보세요.',
+    'Download it on the Apple Appstore': '애플 앱스토어에서 다운로드 할 수 있습니다.',
+    'Download it on the Android Appstore': '안드로이드 앱스토에서 다운로드 할 수 있습니다.',
+    'Username': '사용자 이름',
+    'Password': '비밀번호',
+    'Log in with Facebook': '페이스북으로 로그인',
+    'Forgot password?': '비밀번호를 잊으셨나요?',
+    'Sign up to see photos and videos from your friends.': '여러분의 친구들에게 당신의 사진과 동영상을 보여주세요.',
+    'Email': '이메일',
+    'Full Name': '전체 이름',
+    'By signing up, you agree to our': '회원가입을 하면',
+    'Terms & Privacy Policy': '우리의 정책에 동의하는 것이라고 간주합니다.',
+    'About Us': '노마드그램이란?',
+    'Support': '도움',
+    'Blog': '블로그',
+    'Press': '프레스',
+    'API': 'API',
+    'Jobs': '채용',
+    'Privacy': '정책',
+    'Terms': '텀즈',
+    'Directory': '디렉토리',
+    'Language': '언어',
+    'JaeeonJin': '진재언',
+  },
+  'options': {
+      // 복수에 해당하는 문자열은 여기에 적어야 한다고 함..
+  },
 }

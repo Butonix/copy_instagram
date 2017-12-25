@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Language: kr"
+
+#: src/components/Auth/presenter.js
+msgid "Checkout our app. Is cool"
+msgstr "로그아웃"
+
+#: src/components/Auth/presenter.js
+msgid "Have an account?"
+msgstr "이미 계정이 있나요?"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Log in"
+msgstr "로그인"
+
+#: src/components/Auth/presenter.js
+msgid "Don't have an account?"
+msgstr "계정이 없나요?"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Sign up"
+msgstr "회원가입"
+
+#: src/components/Auth/presenter.js
+msgid "Get the app"
+msgstr "모바일 어플리케이션을 설치해보세요."
+
+#: src/components/Auth/presenter.js
+msgid "Download it on the Apple Appstore"
+msgstr "애플 앱스토어에서 다운로드 할 수 있습니다."
+
+#: src/components/Auth/presenter.js
+msgid "Download it on the Android Appstore"
+msgstr "안드로이드 앱스토에서 다운로드 할 수 있습니다."
+
+#: src/components/AuthForms/index.js
+msgid "Username"
+msgstr "사용자 이름"
+
+#: src/components/AuthForms/index.js
+msgid "Password"
+msgstr "비밀번호"
+
+#: src/components/AuthForms/index.js
+msgid "Log in with Facebook"
+msgstr "페이스북으로 로그인"
+
+#: src/components/AuthForms/index.js
+msgid "Forgot password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: src/components/AuthForms/index.js
+msgid "Sign up to see photos and videos from your friends."
+msgstr "여러분의 친구들에게 당신의 사진과 동영상을 보여주세요."
+
+#: src/components/AuthForms/index.js
+msgid "Email"
+msgstr "이메일"
+
+#: src/components/AuthForms/index.js
+msgid "Full Name"
+msgstr "전체 이름"
+
+#: src/components/AuthForms/index.js
+msgid "By signing up, you agree to our"
+msgstr "회원가입을 하면"
+
+#: src/components/AuthForms/index.js
+msgid "Terms & Privacy Policy"
+msgstr "우리의 정책에 동의하는 것이라고 간주합니다."
+
+#: src/components/Footer/index.js
+msgid "About Us"
+msgstr "노마드그램이란?"
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr "도움"
+
+#: src/components/Footer/index.js
+msgid "Blog"
+msgstr "블로그"
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr "프레스"
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr "API"
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr "채용"
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr "정책"
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr "텀즈"
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr "디렉토리"
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr "언어"
+
+#: src/components/Footer/index.js
+msgid "JaeeonJin"
+msgstr "진재언"
+
