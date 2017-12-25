@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
 
-    url(r'^', views.ReactAppView.as_view()), # catch-all URL
+    url(r'^$', views.ReactAppView.as_view()), # catch-all URL
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # 요건 media 관련 요청
 

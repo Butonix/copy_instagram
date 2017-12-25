@@ -304,6 +304,9 @@ ADMIN_URL = r'^admin/'
 # ------------------------------------------------------------------------------
 TAGGIT_CASE_INSENSITIVE = True
 REST_USE_JWT = True
+JWT_AUTH = {
+    'JWT_VERIFY_EXPRIRATION': False
+}
 ACCOUNT_LOGOUT_ON_GET = True
 CORS_ORIGIN_ALLOW_ALL = True
 
