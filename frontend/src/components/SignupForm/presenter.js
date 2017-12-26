@@ -26,6 +26,7 @@ export const SignupForm = (props, context) => (
                 type="email"
                 placeholder={context.t("Email")}
                 className={formStyles.textInput} 
+                value={props.emailValue}
                 onChange={props.handleInputChange}
                 name="email"
             />
@@ -33,13 +34,15 @@ export const SignupForm = (props, context) => (
                 type="text"
                 placeholder={context.t("Full Name")}
                 className={formStyles.textInput}
+                value={props.nameValue}
                 onChange={props.handleInputChange}
-                name="fullname"
+                name="name"
             />
             <input
                 type="text"
                 placeholder={context.t("Username")}
                 className={formStyles.textInput}
+                value={props.username}
                 onChange={props.handleInputChange}
                 name="username"
             />
@@ -47,10 +50,15 @@ export const SignupForm = (props, context) => (
                 type="password"
                 placeholder={context.t("Password")}
                 className={formStyles.textInput}
+                value={props.password}
                 onChange={props.handleInputChange}
                 name="password"              
             />
-            <input type="submit" value={context.t("Sign up")} className={formStyles.button} />
+            <input 
+                type="submit"
+                value={context.t("Sign up")}
+                className={formStyles.button}
+            />
         </form>
         <p className={formStyles.terms}>
             {context.t("By signing up, you agree to our")}
@@ -62,6 +70,8 @@ export const SignupForm = (props, context) => (
 SignupForm.propTypes = {
     usernameValue: PropTypes.string.isRequired,
     passwordValue: PropTypes.string.isRequired,
+    emailValue: PropTypes.string.isRequired,
+    nameValue: PropTypes.string.isRequired,
     handleInputChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleFacebookLogin: PropTypes.func.isRequired

@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         usernameLogin: (username, password) => {
             dispatch(userActions.usernameLogin(username, password));
-        }
+        }      
     };
 };
 

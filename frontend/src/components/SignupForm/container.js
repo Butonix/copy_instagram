@@ -7,24 +7,25 @@ class Container extends Component {
 
     state = {
         email: "",
-        fullname: "",
+        name: "",
         username: "",
         password: ""
     };
 
     static propTypes = {
-        facebookLogin: PropTypes.func.isRequired
+        facebookLogin: PropTypes.func.isRequired,
+        createAccount: PropTypes.func.isRequired
     }
     
     render() {
-        const {email, fullname, username, password } = this.state;
+        const {email, name, username, password } = this.state;
         return (
             <SignupForm
                 handleInputChange={this._handleInputChange}
                 handleSubmit={this._handleSubmit}
                 handleFacebookLogin={this._handleFacebookLogin}
                 emailValue={email}
-                fullnameValue={fullname}
+                nameValue={name}
                 usernameValue={username}
                 passwordValue={password}
             />
@@ -39,11 +40,12 @@ class Container extends Component {
     };
 
     _handleSubmit = event => {
-        // 브라우저가 디폴트 작업을 수행하지 않도록 막는 함수
-        // <input type button으로 막는 것이 아닌, 이 문장을 씀으로써 submit으로
-        // 기존 동작을 거부할 수 있다.
         event.preventDefault();
+
         // redux action will be here
+        const { createAccount } = this.props;
+        const { email, name, username, password } = this.state;
+        createAccount(username, password, email, name);
     }
 
     _handleFacebookLogin = response => {
