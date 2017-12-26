@@ -2,11 +2,18 @@
 
 // actions
 const SAVE_TOKEN = "SAVE_TOKEN";
+const LOGOUT = "LOGOUT";
 
 function saveToken(token) {
     return {
         type: SAVE_TOKEN, // type은 액션의 타입을 뜻함(임의 지정인듯)
         token
+    };
+}
+
+function logout() {
+    return {
+        type: LOGOUT
     };
 }
 
@@ -95,6 +102,8 @@ function reducer(state = initialState, action) {
     switch (action.type) {
         case SAVE_TOKEN:
             return applySetToken(state, action);
+        case LOGOUT:
+            return applyLogout(state, action);
         default:
             return state;
     }
@@ -111,11 +120,19 @@ function applySetToken(state, action) {
     };
 }
 
+function applyLogout(state, action) {
+    localStorage.removeItem("jwt");
+    return {
+        isLoggedIn: false
+    };
+}
+
 // action creators
 const actionCreators = {
     facebookLogin,
     usernameLogin,
-    createAccount
+    createAccount,
+    logout
 };
 
 // exports
