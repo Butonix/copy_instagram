@@ -3,7 +3,6 @@
 // actions
 const SAVE_TOKEN = "SAVE_TOKEN";
 
-// action creators
 function saveToken(token) {
     return {
         type: SAVE_TOKEN, // type은 액션의 타입을 뜻함(임의 지정인듯)
@@ -15,7 +14,7 @@ function saveToken(token) {
 // django-rest-auth 도큐먼트를 참고해보자
 // redux-thunk를 사용한다.(조건이 맞을 때 디스패치하거나 디스패치 지연 등..을 위해)
 function facebookLogin(access_token) {
-    return function(dispatch) {
+    return dispatch => {
         fetch("/users/login/facebook/", {
             method: "POST",
             headers: {
@@ -38,7 +37,7 @@ function facebookLogin(access_token) {
 
 // django-rest-auth doc의 endpoints에 다 나와있다.
 function usernameLogin(username, password) {
-    return function(dispatch) {
+    return dispatch => {
         fetch("rest-auth/login/", {
             method: "POST",
             headers: {
@@ -60,7 +59,7 @@ function usernameLogin(username, password) {
 }
 
 function createAccount(username, password, email, name) {
-    return function(dispatch) {
+    return dispatch => {
         fetch("/rest-auth/registration/", {
             method: "POST",
             headers: {
@@ -87,7 +86,8 @@ function createAccount(username, password, email, name) {
 // initial state
 const initialState = {
     // local storage는 쿠키와 유사함.
-    isLoggedIn: localStorage.getItem("jwt") ? true : false
+    isLoggedIn: localStorage.getItem("jwt") ? true : false,
+    token: localStorage.getItem("jwt")
 };
 
 // reducer

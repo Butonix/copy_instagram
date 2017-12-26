@@ -5,6 +5,7 @@ import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { i18nState } from "redux-i18n";
 import user from "redux/module/user";
+import photos from "redux/module/photos";
 // import Reactotron from "ReactotronConfig";
 
 // 이 변수는 nodejs의 전체 정보를 갖고 있다.
@@ -28,6 +29,7 @@ if(env === "development") {
 
 const reducer = combineReducers ({
     user,
+    photos,
     routing: routerReducer,
     i18nState
 });
