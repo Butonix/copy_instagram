@@ -5,9 +5,10 @@ import Container from "./container";
 // 여기서는 user.js의 스토어에서 isLoggedIn을 얻었음
 // 타이머 앱 만드는 리덕스 강의에서 설명해줌
 const mapStateToProps = (state, ownProps) => {
-    const { user } = state;
+    const { user, routing : { location } } = state;
     return {
-        isLoggedIn: user.isLoggedIn // user는 reducer로써 선언하였음
+        isLoggedIn: user.isLoggedIn, // user는 reducer로써 선언하였음
+        pathname: location.pathname
     };
 };
 
