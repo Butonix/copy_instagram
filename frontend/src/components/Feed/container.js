@@ -15,7 +15,13 @@ class Container extends Component {
 
     componentDidMount() {
         const { getFeed } = this.props;
-        getFeed();
+        if( !this.props.feed ) {
+            getFeed();
+        } else {
+            this.setState ({
+                loading: false
+            })
+        }
     } 
 
     // 이것도 내장 함수로 존재.
