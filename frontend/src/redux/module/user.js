@@ -138,13 +138,46 @@ function getPhotoLikes(photoId) {
 
 function followUser(userId) {
     return (dispatch, getState) => {
+        // optimistic update
         dispatch(setFollowUser(userId));
+
+        const { user : { token } } = getState();
+        fetch(`/users/${userId}/follow/`, {
+            method: "POST",
+            headers: {
+                Authorization: `JWT ${token}`,
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => {
+            if(response.statue === 401) {
+                dispatch(logout())
+            } else if ( !response.ok) {
+                dispatch(setUnfollowUser(userId));
+            }
+        });
     };
 }
 
 function unfollowUser(userId) {
     return (dispatch, getState) => {
         dispatch(setUnfollowUser(userId));
+        
+        const { user: { token } } = getState();
+        fetch(`/users/${userId}/unfollow/`, {
+            method: "POST",
+            headers: {
+                Authorization: `JWT ${token}`,
+                "Content-Type": "application/json"
+            },
+        })
+            .then(response => {
+                if (response.statue === 401) {
+                    dispatch(logout())
+                } else if (!response.ok) {
+                    dispatch(setFollowUser(userId));
+                }
+            });
     };
 }
 
