@@ -10,21 +10,21 @@ import CommentBox from "components/CommentBox";
 const FeedPhoto = (props, context) => {
     return (
         <div className={styles.feedPhoto}>
-            <header>
+            <header className={styles.header}>
                 <img
-                    // 프로필이미지가 있으면 사용하고 없으면 디폴트로 대체
                     src={props.creator.profile_image || require("images/noPhoto.png")}
                     alt={props.creator.username}
+                    className={styles.image}
                 />
-                <div>
-                    <span>{props.creator.username}</span>
-                    <span>{props.location}</span>
+                <div className={styles.headerColumn}>
+                    <span className={styles.creator}>{props.creator.username}</span>
+                    <span className={styles.location}>{props.location}</span>
                 </div>
             </header>
             <img src={props.file} alt={props.caption} />
-            <div>
+            <div className={styles.meta}>
                 <PhotoActions number={props.like_count} />
-                <PhotoComments 
+                <PhotoComments
                     caption={props.caption}
                     creator={props.creator.username}
                     comments={props.comments}
@@ -47,7 +47,7 @@ FeedPhoto.propTypes = {
     file: PropTypes.string.isRequired,
     like_count: PropTypes.number.isRequired,
     caption: PropTypes.string.isRequired,
-    
+
     comments: PropTypes.arrayOf(
         PropTypes.shape({
             message: PropTypes.string.isRequired,
@@ -60,5 +60,6 @@ FeedPhoto.propTypes = {
 
     natural_time: PropTypes.string.isRequired
 };
+
 
 export default FeedPhoto;
