@@ -8,19 +8,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   .box {
     @include boxBorder(no);
     width: 100%;
     max-width: $max-card-width;
+
     .header {
       display: flex;
       padding: 14px 0;
       justify-content: center;
       align-items: center;
       border-bottom: 2px solid $light-grey;
+
       svg {
         cursor: pointer;
       }
+
       .title {
         order: 1;
         margin-left: auto;
@@ -29,11 +33,12 @@
         font-size: $big-font-size;
       }
     }
+    
     .content {
       min-height: 300px;
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      flex-direction: column;
     }
   }
 }
