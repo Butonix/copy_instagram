@@ -43,6 +43,9 @@ DJANGO_APPS = [
 
     # Admin
     'django.contrib.admin',
+
+    # Humanize
+    # 'django.contrib.humanzie',
 ]
 THIRD_PARTY_APPS = [
     # 'crispy_forms',  # Form layouts # don't use at this project
