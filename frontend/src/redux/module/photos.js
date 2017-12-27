@@ -6,6 +6,8 @@ const SET_FEED = "SET_FEED";
 const LIKE_PHOTO = "LIKE_PHOTO";
 const UNLIKE_PHOTO = "UNLIKE_PHOTO";
 const ADD_COMMENT = "ADD_COMMENT";
+// const DELETE_COMMENT = "DELETE_COMMENT";
+// const SET_PHOTO_LIKES = "SET_PHOTO_LIKES";
 
 // action creators
 function setFeed(feed) {
@@ -36,6 +38,22 @@ function addComment(photoId, comment) {
         comment
     }
 }
+
+// function removeComment(photoId, messageId) {
+//     return {
+//         type: DELETE_COMMENT,
+//         photoId,
+//         messageId
+//     };
+// }
+
+// function setPhotoLikes(photoId, likes) {
+//     return {
+//         type: SET_PHOTO_LIKES,
+//         photoId,
+//         likes
+//     };
+// }
 
 // api actions
 // 좀 다른 방식의 dispatch를 사용하고 있다(user와 비교해보자)

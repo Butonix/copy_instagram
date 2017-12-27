@@ -72,7 +72,8 @@ FeedPhoto.propTypes = {
             message: PropTypes.string.isRequired,
             creator: PropTypes.shape({
                 profile_image: PropTypes.string,
-                username: PropTypes.string.isRequired
+                username: PropTypes.string.isRequired,
+                name: PropTypes.string,
             }).isRequired
         })
     ).isRequired,

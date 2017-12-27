@@ -3,7 +3,9 @@
 // actions
 const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGOUT = "LOGOUT";
+const SET_USER_LIST = "SET_USER_LIST";
 
+// action creators
 function saveToken(token) {
     return {
         type: SAVE_TOKEN, // type은 액션의 타입을 뜻함(임의 지정인듯)
@@ -14,6 +16,13 @@ function saveToken(token) {
 function logout() {
     return {
         type: LOGOUT
+    };
+}
+
+function setUserList(userList) {
+    return {
+        type: SET_USER_LIST,
+        userList 
     };
 }
 
@@ -90,6 +99,29 @@ function createAccount(username, password, email, name) {
     };
 }
 
+function getPhotoLikes(photoId) {
+    return (dispatch, getState) => {
+        const { user: { token } } = getState()
+        fetch(`/images/${photoId}/likes/`, {
+            method: "GET",
+            headers: {
+                Authorization: `JWT ${token}`,
+            },
+        })
+        .then(response => {
+            if (response.status === 401) {
+                dispatch(logout());
+            }
+            return response.json()
+        })
+        .then(json => {
+            if (json.message) {
+                dispatch(setUserList(json));
+            }
+        })
+    }
+}
+
 // initial state
 const initialState = {
     // local storage는 쿠키와 유사함.
@@ -104,6 +136,8 @@ function reducer(state = initialState, action) {
             return applySetToken(state, action);
         case LOGOUT:
             return applyLogout(state, action);
+        case SET_USER_LIST:
+            return applySetUserList(state, action);
         default:
             return state;
     }
@@ -127,12 +161,21 @@ function applyLogout(state, action) {
     };
 }
 
+function applySetUserList(state, action) {
+    const { userList } = action;
+    return {
+        ...state,
+        userList
+    };
+}
+
 // action creators
 const actionCreators = {
     facebookLogin,
     usernameLogin,
     createAccount,
-    logout
+    logout,
+    getPhotoLikes
 };
 
 // exports
