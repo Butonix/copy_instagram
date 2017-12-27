@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
 import Ionicon from "react-ionicons";
-// import UserRow from "components/UserRow";
+import UserRow from "components/UserRow";
 
 const UserList = props => (
     <div className={styles.container}>
@@ -15,14 +15,16 @@ const UserList = props => (
                 </span>
             </header>
             <div className={styles.content}>
-                {props.loading ? <Loading /> : null }
+                {props.loading ? <Loading /> : <RenderUsers list={props.userList} />}
             </div>
         </div>
     </div>
 );
 
-const RenderUsers = props => "리스트";
-    // props.list.map(user => <UserRow user={user} key={user.id} />);
+const RenderUsers = props =>
+    props.list.map(user => (
+        <UserRow user={user} key={user.id} />
+    ));
 
 RenderUsers.propTypes = {
     list: PropTypes.array
