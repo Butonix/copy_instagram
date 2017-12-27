@@ -16,9 +16,13 @@ class Container extends Component {
     componentDidMount() {
         const { getFeed } = this.props;
         if( !this.props.feed ) {
+            // 피드가 존재하지 않을 때만 요청하는 것으로 변경한다.
             getFeed();
         } else {
             this.setState ({
+                // 이게 생각보다 되게 중요하다.
+                // 만약 이게 없으면 왓다갓다할 때마다 계속 요청하기 때문이다..
+                // 컴포넌트가 다시 마운트 될 때 loading이 true이므로 재조정한다.
                 loading: false
             })
         }
