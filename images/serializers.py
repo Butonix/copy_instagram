@@ -64,6 +64,10 @@ class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
     creator = FeedUserSerializer()
     tags = TagListSerializerField()
 
+    # view에서 context를 받아와서 사용하는 시리얼라이저 메소드 필드
+    # 특정 함수를 정의해야만 사용 가능하다.
+    is_liked = serializers.SerializerMethodField()
+
     class Meta: # meta 클래스는 configuration class!
         model = models.Image
         fields = (
@@ -75,9 +79,24 @@ class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
             'like_count',
             'creator',
             'tags',
-            'natural_time'
+            'natural_time',
+            'is_liked'
         )
 
+    # obj는 시이럴라이즈하고 json으로 변환할 목적 객체를 의미한다.(여기서는 이미지
+    def get_is_liked(self, obj):
+        
+        if 'request' in self.context:
+            request = self.context['request']
+
+            try:
+                models.Like.objects.get(creator__id=request.user.id, image__id=obj.id)    
+                return True
+            except models.Like.DoesNotExist:
+                return False
+        
+        else:
+            return False
 
 class InputImageSerializer(serializers.ModelSerializer):
 

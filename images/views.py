@@ -61,7 +61,7 @@ class Images(APIView):
         # 아래는 key를 기준으로 정렬을 수행한다.
         sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
 
-        serializer = serializers.ImageSerializer(sorted_list, many=True)
+        serializer = serializers.ImageSerializer(sorted_list, many=True, context={'request': request})
 
         return Response(status=status.HTTP_201_CREATED, data=serializer.data)
 
@@ -238,7 +238,7 @@ class ImageDetail(APIView):
 
         serializer = serializers.ImageSerializer(image)
 
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return Response(data=serializer.data, status=status.HTTP_200_OK, context={'request': request})
 
     def put(self, request, image_id, format=None):
 
