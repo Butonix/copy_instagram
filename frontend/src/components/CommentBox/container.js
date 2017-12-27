@@ -9,9 +9,10 @@ class Container extends Component {
     render() {
         return (
             <CommentBox 
+                {...this.state} 
+                {...this.props}            
                 handleInputChange={this._handleInputChange}
                 handleKeyPress={this._handleKeyPress}
-                {...this.state} 
             />
         );
     }
@@ -24,11 +25,17 @@ class Container extends Component {
     };
 
     _handleKeyPress = event => {
+        const { submitComment } = this.props;
+        const { comment } = this.state;
         const { key } = event;
          
          // 엔터치면 줄 바꿈되는 기본 동작 막기
         if( key === "Enter" ) {
             event.preventDefault();
+            submitComment(comment);
+            this.setState({
+                comment: ""
+            });
         } 
 
         
