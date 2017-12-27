@@ -22,15 +22,15 @@ App.propTypes = {
 
 const PrivateRoutes = props => (
     <Switch>
-        <Route exact path="/" component={Feed} />
-        <Route exact path="/explore" component={Explore} />
+        <Route exact path={process.env.PUBLIC_URL + "/"} component={Feed} />
+        <Route exact path={process.env.PUBLIC_URL + "/explore"} component={Explore} />
     </Switch>
 );
 
 const PublicRoutes = props => (
     <Switch>
-        <Route exact path="/" component={Auth} />
-        <Route exact path="/forgot" render={() => "password"} />
+        <Route exact path={process.env.PUBLIC_URL + "/"} component={Auth} />
+        <Route exact path={process.env.PUBLIC_URL + "/forgot"} render={() => "password"} />
     </Switch>
 );
 
